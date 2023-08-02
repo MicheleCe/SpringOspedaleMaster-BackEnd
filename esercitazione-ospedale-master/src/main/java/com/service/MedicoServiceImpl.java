@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.entity.Medico;
@@ -19,6 +21,21 @@ public class MedicoServiceImpl implements MedicoService {
 	@Override
 	public List<Medico> findAll() {
 		return mr.findAll();
+	}
+
+	@Override
+	public ResponseEntity<Medico> findByEmail(String email) {
+		try {
+			Medico m = mr.findByEmail(email);
+			if (m != null) {
+				return new ResponseEntity<>(m, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,11 @@ public class MedicoController {
 	@GetMapping("/getMedico/{id}")
 	public Medico findById(@PathVariable Integer id) {
 		return ms.findById(id);
+	}
+
+	@GetMapping("/getMedicoByEmail/{email}")
+	public ResponseEntity<Medico> findMedicoByEmail(@PathVariable String email) {
+		return ms.findByEmail(email);
 	}
 
 	@PostMapping("/postMedico")

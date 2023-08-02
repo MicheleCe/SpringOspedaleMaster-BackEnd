@@ -25,7 +25,7 @@ public class AppuntamentoController {
 	@Autowired
 	private AppuntamentoService as;
 
-	@GetMapping("/getAppuntamento")
+	@GetMapping("/getAppuntamenti")
 	public List<Appuntamento> getAppuntamenti() {
 		return as.findAll();
 	}

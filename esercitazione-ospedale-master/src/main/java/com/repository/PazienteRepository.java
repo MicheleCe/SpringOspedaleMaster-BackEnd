@@ -6,4 +6,6 @@ import com.entity.Paziente;
 
 public interface PazienteRepository extends JpaRepository<Paziente, Integer> {
 
+	public Paziente findByEmail(String email);
+
 }

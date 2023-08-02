@@ -6,4 +6,6 @@ import com.entity.Medico;
 
 public interface MedicoRepository extends JpaRepository<Medico, Integer> {
 
+	public Medico findByEmail(String email);
+
 }

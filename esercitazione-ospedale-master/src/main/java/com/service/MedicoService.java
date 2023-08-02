@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.entity.Medico;
 
 public interface MedicoService {
@@ -15,5 +17,7 @@ public interface MedicoService {
 	public void delete(Integer id);
 
 	public Medico patch(Medico medico);
+
+	public ResponseEntity<Medico> findByEmail(String email);
 
 }
